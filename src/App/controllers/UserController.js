@@ -8,7 +8,7 @@ class UserController {
     const schema = Yup.object({
       name: Yup.string().required(),
       email: Yup.string().email().required(),
-      password: Yup.string().required().min(6),
+      password: Yup.string().min(6).required(),
       admin: Yup.boolean(),
     });
 
@@ -21,6 +21,8 @@ class UserController {
     const { name, email, password, admin } = request.body;
 
     const userExists = await User.findOne({ where: { email } });
+
+   
 
     if (userExists) {
       return response.status(400).json({ error: 'User already exists.' });
