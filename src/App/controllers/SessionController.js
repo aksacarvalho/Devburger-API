@@ -8,7 +8,7 @@ class SessionController {
   async store(request, response) {
     const schema = Yup.object({
       email: Yup.string().email().required(),
-      password: Yup.string().required().min(6),
+      password: Yup.string().min(6).required(),
     });
 
     const isValid = await schema.isValid(request.body);
@@ -25,7 +25,11 @@ class SessionController {
 
     const { email, password } = request.body;
 
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({
+      where: {
+        email,
+      }
+    });
 
     if (!user) {
       return emailOrPasswordIsIncorrect();

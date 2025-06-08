@@ -12,13 +12,15 @@ class User extends Model {
       admin: Sequelize.BOOLEAN,
     }, 
     {
-       sequelize
+       sequelize,
     },
   );
 
-  this.addHook('beforeSave',  async (user) => {
+  this.addHook('beforeSave',  async (user) => 
+    {
+        const saltRounds = 10;
       if (user.password) {
-        user.password_hash = await bcrypt.hash(user.password, 10);
+        user.password_hash = await bcrypt.hash(user.password, saltRounds);
       }
   });
 
