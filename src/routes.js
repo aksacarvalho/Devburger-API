@@ -7,6 +7,7 @@ import UserController from './App/controllers/UserController';
 import SessionController from './App/controllers/SessionController';
 import productController from './App/controllers/productController';
 import CategoryController from './App/controllers/CategoryController';
+import OrderController from './App/controllers/OrderController';
 
 
 
@@ -25,5 +26,6 @@ routes.get('/products',  productController.index);
 routes.post('/categories',  CategoryController.store);
 routes.get('/categories',  CategoryController.index);
 
+routes.post('/orders', OrderController.store);
 
 export default routes;
