@@ -5,7 +5,7 @@ import authMiddleware from './App/middlewares/auth';
 
 import UserController from './App/controllers/UserController';
 import SessionController from './App/controllers/SessionController';
-import productController from './App/controllers/productController';
+import productController from './App/controllers/ProductController';
 import CategoryController from './App/controllers/CategoryController';
 import OrderController from './App/controllers/OrderController';
 
@@ -22,7 +22,7 @@ routes.post('/session', SessionController.store);
 routes.use(authMiddleware);
 routes.post('/products', upload.single('file'), productController.store);
 routes.get('/products',  productController.index);
-routes.put('/products', upload.single('file'), productController.update);
+routes.put('/products/:id', upload.single('file'), productController.update);
 
 routes.post('/categories',  CategoryController.store);
 routes.get('/categories',  CategoryController.index);

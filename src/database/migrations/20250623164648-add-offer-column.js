@@ -14,5 +14,5 @@ module.exports = {
     
       await queryInterface.removeColumn('products', 'offer');
      
-  }
+  },
 };
