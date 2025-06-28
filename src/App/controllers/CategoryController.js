@@ -21,10 +21,10 @@ class CategoryController {
       return response.status(401).json();
     }
 
-    const { filename: path } = request.file;
-
     const { name } = request.body;
-
+    
+    const { filename: path } = request.file;
+    
     const categoryExists = await Category.findOne({
       where: {
         name,
